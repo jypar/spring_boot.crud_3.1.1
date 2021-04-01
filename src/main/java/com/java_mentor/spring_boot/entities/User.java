@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.security.SecureRandom;
 import java.util.*;
 
 @Entity
@@ -32,7 +33,7 @@ public class User implements UserDetails {
     }
 
     public void setPassword(String password) {
-        this.password = new BCryptPasswordEncoder(12).encode(password);
+        this.password = new BCryptPasswordEncoder(12,new SecureRandom()).encode(password);
     }
 
     public Set<Role> getRoles() {
