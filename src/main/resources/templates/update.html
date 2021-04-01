@@ -15,7 +15,7 @@
     <input type="submit" value="Update User">
     <p>
         <label>Roles:
-            <input type="checkbox" name="authorities"
+            <input type="checkbox" name="roles"
                    th:each="role : ${allRoles}"
                    th:text="${role.name}"
                    th:value="${role.id}"

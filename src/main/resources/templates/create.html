@@ -13,10 +13,11 @@
     <input type="text" th:field="*{password}" id="password" placeholder="password">
     <p>
         <label>Roles:
-            <input type="checkbox" name="authorities"
+            <input type="checkbox" name="roles"
                    th:each="role : ${allRoles}"
                    th:text="${role.name}"
                    th:value="${role.id}"
+
             />
         </label>
     </p>

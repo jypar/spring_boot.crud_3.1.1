@@ -1,29 +1,21 @@
 package com.java_mentor.spring_boot.services;
 
-import com.java_mentor.spring_boot.entities.Role;
 import com.java_mentor.spring_boot.entities.User;
 import com.java_mentor.spring_boot.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserDetailsService,UserService {
+public class UserServiceImpl implements UserService {
 
-    private RoleServiceImpl roleRepository;
     private UserRepository userRepository;
 
     @Autowired
-    public UserServiceImpl(RoleServiceImpl roleRepository, UserRepository userRepository) {
-        this.roleRepository = roleRepository;
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -59,16 +51,8 @@ public class UserServiceImpl implements UserDetailsService,UserService {
         return user.get();
     }
 
-    public User getUserByName(String name){
-        return userRepository.findByUsername(name);
-    }
+    //public User getUserByName(String name){
+       // return userRepository.findByUsername(name);
+    //}
 
-
-    public Set<Role> getSetOfRoles(List<String> rolesId) {
-        Set<Role> roleSet = new HashSet<>();
-        for (String id: rolesId) {
-            roleSet.add(roleRepository.getRoleById(Long.parseLong(id)));
-        }
-        return roleSet;
-    }
 }

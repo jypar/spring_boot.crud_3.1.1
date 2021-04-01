@@ -1,7 +1,7 @@
 package com.java_mentor.spring_boot.configs;
 
 import com.java_mentor.spring_boot.configs.handler.LoginSuccessHandler;
-import com.java_mentor.spring_boot.services.UserServiceImpl;
+import com.java_mentor.spring_boot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,10 +18,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @ComponentScan("com.java_mentor.spring_boot")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private UserServiceImpl userService;
+    private UserService userService;
 
     @Autowired
-    public SecurityConfig(UserServiceImpl userService) {
+    public SecurityConfig(UserService userService) {
         this.userService = userService;
     }
 
