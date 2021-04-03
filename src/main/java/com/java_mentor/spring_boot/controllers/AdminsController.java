@@ -55,14 +55,7 @@ public class AdminsController {
 
     @GetMapping("/{id}/delete")
     public String deleteUser(@PathVariable Long id, Model model) {
-        User user = userService.findById(id);
-        if(user != null) {
-            userService.remove(id);
-            model.addAttribute("messege", "user " + user.getUsername() + " succesfully deleted");
-        } else {
-            model.addAttribute("messege", "no such user");
-        }
-
+        userService.remove(id);
         return "redirect:/admin";
     }
 }
