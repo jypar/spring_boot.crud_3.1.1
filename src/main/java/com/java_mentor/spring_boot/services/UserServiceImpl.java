@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
         try {
             user = userRepository.findById(id).orElseThrow(() -> new Exception("user with id= "+id+"is not found"));
         } catch (Exception e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         return user;
     }
